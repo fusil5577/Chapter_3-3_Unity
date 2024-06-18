@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     private int currentScore; // 현재 점수
 
     public PlayerController playerController;
+    public GameObject gameOverUI;
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         maxXPosition = Mathf.RoundToInt(playerController.transform.position.x); // 플레이어 초기 위치 설정
         currentScore = 0; // 점수 초기화
         UpdateUI();
@@ -53,7 +57,22 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
-        // 게임 오버 처리
+        Cursor.lockState = CursorLockMode.None;
+        gameOverUI.SetActive(true);
+        StopAllCoroutines();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
     }
 }

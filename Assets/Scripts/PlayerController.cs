@@ -20,11 +20,6 @@ public class PlayerController : MonoBehaviour
         animationController = GetComponent<AnimationController>();
     }
 
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     public void OnMoveLeft(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed && canMove)
