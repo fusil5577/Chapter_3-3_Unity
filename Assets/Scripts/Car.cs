@@ -9,6 +9,8 @@ public class Car : MonoBehaviour
     public float deactivateDistance = 20f; // 비활성화 거리
     private GameObject player; // 플레이어 객체
 
+    [SerializeField] private AudioClip GameOverSound;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player"); // 플레이어 객체 찾기
@@ -41,6 +43,8 @@ public class Car : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (GameOverSound) SoundManager.PlayClip(GameOverSound);
+
             GameManager.Instance.GameOver();
         }
     }

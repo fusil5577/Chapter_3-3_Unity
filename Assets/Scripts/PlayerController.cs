@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody;
     private AnimationController animationController;
+    [SerializeField] private AudioClip MoveClip;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && canMove)
         {
+            if (MoveClip) SoundManager.PlayClip(MoveClip);
+
             StartCoroutine(Move(Vector3.back));
         }
     }
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && canMove)
         {
+            if (MoveClip) SoundManager.PlayClip(MoveClip);
+
             StartCoroutine(Move(Vector3.forward));
         }
     }
@@ -40,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && canMove)
         {
+            if (MoveClip) SoundManager.PlayClip(MoveClip);
+
             StartCoroutine(Move(Vector3.left));
         }
     }
@@ -48,6 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && canMove)
         {
+            if (MoveClip) SoundManager.PlayClip(MoveClip);
+
             StartCoroutine(Move(Vector3.right));
         }
     }

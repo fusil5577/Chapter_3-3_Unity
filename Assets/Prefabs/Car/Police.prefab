@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   deactivateDistance: 20
+  GameOverSound: {fileID: 8300000, guid: 90321d63711a7ef4ba7c171ea967cb2e, type: 3}
 --- !u!65 &7615960980576011543
 BoxCollider:
   m_ObjectHideFlags: 0
