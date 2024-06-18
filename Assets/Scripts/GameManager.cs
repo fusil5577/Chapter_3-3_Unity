@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
+
         if (Instance != null) Destroy(gameObject);
         Instance = this;
 
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         gameOverUI.SetActive(true);
         StopAllCoroutines();
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
